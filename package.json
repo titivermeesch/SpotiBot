@@ -1,0 +1,41 @@
+{
+  "name": "spotibot",
+  "version": "1.0.0",
+  "description": "Use Spotify to listen to music together on Discord",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titivermeesch/SpotifyDiscordBot.git"
+  },
+  "keywords": [
+    "spotify",
+    "discord",
+    "bot",
+    "music"
+  ],
+  "author": "Tristan Vermeesch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/titivermeesch/SpotifyDiscordBot/issues"
+  },
+  "homepage": "https://github.com/titivermeesch/SpotifyDiscordBot#readme",
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "base64url": "^3.0.1",
+    "discord.js": "^12.5.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10",
+    "qs": "^6.7.0",
+    "sha.js": "^2.4.11"
+  }
+}
