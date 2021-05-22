@@ -1,16 +1,8 @@
 import { Client } from 'discord.js'
-import Command from './commands/Command'
-import { getAllCommandFiles } from '../utils/file-utils'
+import { importAllCommands } from '../utils/file-utils'
 
 const client = new Client()
-const commands = new Map<String, Command>()
-const commandFiles = getAllCommandFiles()
-
-for (const file of commandFiles) {
-  import(`./commands/${file}`).then(command =>
-    commands.set(command.default?.name, command.default)
-  )
-}
+const commands = importAllCommands()
 
 client.on('message', msg => {
   if (!msg.content.startsWith('!') || msg.author.bot) {
