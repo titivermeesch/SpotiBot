@@ -6,11 +6,15 @@ export default {
   async execute(msg, args) {
     const user = await User.findOne({ discordUserId: msg.author.id })
     if (user) {
-      await msg.author.send('You are already logged in, happy listening!')
+      await msg.channel.send({
+        embed: { description: 'You are already logged in, happy listening!' },
+      })
     } else {
-      await msg.author.send(
-        `Please go to http://localhost:3000/login/${msg.author.id}`
-      )
+      await msg.author.send({
+        embed: {
+          description: `Please go to ${process.env.REDIRECT_URL}/login/${msg.author.id}`,
+        },
+      })
     }
   },
 }

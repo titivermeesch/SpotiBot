@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { IUser } from '../models/User'
+import User, { IUser } from '../models/User'
 
 const refreshUserAccessToken = async (user: IUser): Promise<void> => {
   try {
@@ -16,10 +16,14 @@ const refreshUserAccessToken = async (user: IUser): Promise<void> => {
       url: 'https://accounts.spotify.com/api/token',
       data,
       headers: {
-        Authorization: `Bearer ${user.accessToken}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
+
+    await User.updateOne(
+      { discordUserId: user.discordUserId },
+      { $set: { accessToken: postRes.data.access_token } }
+    )
   } catch (e) {
     console.error(e)
   }

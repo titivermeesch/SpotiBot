@@ -7,7 +7,7 @@ const app = express()
 
 const clientId = process.env.SPOTIFY_CLIENT
 app.get('/login/:discordId', (req, res) => {
-  const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${process.env.REDIRECT_URL}&scope=user-read-playback-state,user-modify-playback-state,user-read-currently-playing&state=${req.params.discordId}`
+  const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${process.env.REDIRECT_URL}/success&scope=user-read-playback-state,user-modify-playback-state,user-read-currently-playing&state=${req.params.discordId}`
   res.redirect(url)
 })
 
@@ -22,7 +22,7 @@ app.get('/success', async (req, res) => {
       client_secret: process.env.SPOTIFY_SECRET,
       grant_type: 'authorization_code',
       code: req.query.code,
-      redirect_uri: process.env.REDIRECT_URL,
+      redirect_uri: `${process.env.REDIRECT_URL}/success`,
     }),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

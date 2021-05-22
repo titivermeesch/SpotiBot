@@ -7,9 +7,13 @@ export default {
     const user = await User.findOne({ discordUserId: msg.author.id })
     if (user) {
       await User.findOneAndDelete({ discordUserId: msg.author.id })
-      await msg.author.send('We deleted your account information')
+      await msg.channel.send({
+        embed: { description: 'We deleted your account information' },
+      })
     } else {
-      await msg.author.send('You are not linked yet')
+      await msg.channel.send({
+        embed: { description: 'You are not linked yet' },
+      })
     }
   },
 }

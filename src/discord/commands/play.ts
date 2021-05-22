@@ -8,7 +8,9 @@ export default {
   async execute(msg, args) {
     const user = await User.findOne({ discordUserId: msg.author.id })
     if (!user) {
-      await msg.author.send('Please link your spotify account with !link')
+      await msg.channel.send({
+        embed: { description: 'Please link your spotify account with !link' },
+      })
     } else {
       const devices = await getUserDevices(user)
       const searchQuery = args.join(' ')

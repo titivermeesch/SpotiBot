@@ -7,10 +7,17 @@ export default {
   async execute(msg: Message, args: String[]): Promise<void> {
     const user = await User.findOne({ discordUserId: msg.author.id })
     if (user) {
-      await msg.author.send('You are already logged in, happy listening!')
+      if (msg.member.voice.channel) {
+        const connection = await msg.member.voice.channel.join()
+        console.log(connection)
+      } else {
+        msg.channel.send({
+          embed: { description: 'Please join a voice chat first' },
+        })
+      }
     } else {
       await msg.author.send(
-        `Please go to http://localhost:3000/login/${msg.author.id}`
+        `Please go to ${process.env.REDIRECT_URL}/login/${msg.author.id}`
       )
     }
   },
