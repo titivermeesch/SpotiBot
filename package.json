@@ -1,6 +1,6 @@
 {
   "name": "spotibot",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Use Spotify to listen to music together on Discord",
   "main": "dist/app.js",
   "scripts": {

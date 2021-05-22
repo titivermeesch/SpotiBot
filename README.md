@@ -8,6 +8,21 @@
 
 SpotiBot is a Discord bot that allows music syncing between multiple users using their spotify account. This allows users to listen to high quality music in sync.
 
+## Features
+
+Since this bot is in an early stage, there are only a few features available right now:
+
+- Authenticate with Spotify
+- Query a list of all possible playback devices
+- Search and play a track
+
+## Commands
+
+- !link: Link your spotify account
+- !unlink: Remove your spotify account
+- !devices: See a list of all your devices
+- !play {music title}: Play the first result of the entered track title
+
 ## Installation
 
 ### Environment variables
