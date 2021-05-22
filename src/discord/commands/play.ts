@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { User } from '../../models/User.js'
-import { getUserDevices } from '../../spotify/devices.js'
+import User from '../../models/User'
+import { getUserDevices } from '../../spotify/devices-helper'
 
 export default {
   name: 'play',
@@ -23,7 +23,6 @@ export default {
       const searchResults = res.data
 
       if (searchResults?.tracks?.items) {
-        console.log(searchResults?.tracks?.items?.[0].uri)
         axios.put(
           `https://api.spotify.com/v1/me/player/play?device_id=${devices[0].id}`,
           {

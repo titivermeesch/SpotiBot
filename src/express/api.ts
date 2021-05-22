@@ -1,13 +1,13 @@
 import axios from 'axios'
 import express from 'express'
 import qs from 'qs'
-import { User } from '../models/User.js'
+import User from '../models/User'
 
 const app = express()
 
 const clientId = process.env.SPOTIFY_CLIENT
 app.get('/login/:discordId', (req, res) => {
-  const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=http://localhost:3000/success&scope=user-read-playback-state,user-modify-playback-state,user-read-currently-playing&state=${req.params.discordId}`
+  const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${process.env.REDIRECT_URL}&scope=user-read-playback-state,user-modify-playback-state,user-read-currently-playing&state=${req.params.discordId}`
   res.redirect(url)
 })
 
@@ -22,7 +22,7 @@ app.get('/success', async (req, res) => {
       client_secret: process.env.SPOTIFY_SECRET,
       grant_type: 'authorization_code',
       code: req.query.code,
-      redirect_uri: 'http://localhost:3000/success',
+      redirect_uri: process.env.REDIRECT_URL,
     }),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
