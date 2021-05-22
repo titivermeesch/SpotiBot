@@ -4,8 +4,7 @@
   "description": "Use Spotify to listen to music together on Discord",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "dev": "nodemon -r dotenv/config --watch './**/*.ts' --exec 'ts-node' src/app.ts"
+    "start": "nodemon -r dotenv/config --watch './**/*.ts' --exec 'ts-node' src/app.ts"
   },
   "repository": {
     "type": "git",

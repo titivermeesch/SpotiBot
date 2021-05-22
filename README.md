@@ -24,7 +24,7 @@ The project expect some environment variables to be present. The `dev` script ex
 Run these commands in the main project folder
 
 - `npm install`
-- `npm run dev`
+- `npm start`
 
 ## Limitations
 
