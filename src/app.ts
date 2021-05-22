@@ -1,5 +1,5 @@
 import connectDatabase from './database/connectDatabase'
 import './discord/bot'
-// import './express/api'
+import './express/api'
 
 connectDatabase()
